@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:was_here/details/add_details.dart';
+import 'package:was_here/details/check_details.dart';
 import 'package:was_here/utils/app_routes.dart';
 
 void main() {

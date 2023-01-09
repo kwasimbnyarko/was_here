@@ -1,10 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:was_here/utils/shared_preferences_keys.dart';
 import '../components/details_page/DetailsTextField.dart';
 import '../components/details_page/DetialsPageCustomButton.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class DetailsPage extends StatelessWidget {
-  // const DetailsPage({Key? key}) : super(key: key);
+class DetailsPage extends StatefulWidget {
+  bool? areDetailsAvailable;
+
+  @override
+  State<DetailsPage> createState() => _DetailsPageState();
+}
+
+class _DetailsPageState extends State<DetailsPage> {
+  Future checkIfDetailsAreAvailable() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      widget.areDetailsAvailable = prefs.getBool(detailsAreAvailableKey);
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,13 +54,15 @@ class DetailsPage extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        const DetailsTextField(
+                        DetailsTextField(
                           hintText: "Full Name",
+                          enabled: (widget.areDetailsAvailable!) ? false : true,
                         ),
                         DetailsTextField(
                           hintText: "Index Number",
                           keyboardType: TextInputType.number,
                           maxLength: 7,
+                          enabled: (widget.areDetailsAvailable!) ? false : true,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "Please enter index number";
@@ -58,6 +80,7 @@ class DetailsPage extends StatelessWidget {
                           hintText: "Reference number",
                           keyboardType: TextInputType.number,
                           maxLength: 8,
+                          enabled: (widget.areDetailsAvailable!) ? false : true,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "Please enter index number";

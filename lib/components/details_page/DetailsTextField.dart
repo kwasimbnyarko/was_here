@@ -6,17 +6,20 @@ class DetailsTextField extends StatelessWidget {
       this.hintText,
       this.validator,
       this.keyboardType,
-      this.maxLength});
+      this.maxLength,
+      this.enabled});
   final String? hintText;
   final FormFieldValidator<String>? validator;
   final TextInputType? keyboardType;
   final int? maxLength;
+  final bool? enabled;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
+        enabled: enabled ?? true,
         keyboardType: keyboardType ?? TextInputType.text,
         maxLength: maxLength,
         maxLines: 1,
