@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:was_here/details/check_details.dart';
-import 'package:was_here/details/change_details.dart';
+import 'package:was_here/details_pages/check_details.dart';
+import 'package:was_here/details_pages/change_details.dart';
+import 'package:was_here/splash/splash.dart';
 
 class AppRouter {
   static const detailsPage = "/detailsPage";
   static const changeDetailsPage = '/changeDetialsPage';
+  static const splashScreen = '/splash';
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case splashScreen:
+        return MaterialPageRoute(
+            builder: (context) => SplashScreen(), settings: settings);
       case detailsPage:
         return MaterialPageRoute(
             builder: (context) => DetailsPage(), settings: settings);

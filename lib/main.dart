@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:was_here/details/check_details.dart';
 import 'package:was_here/utils/app_routes.dart';
 
 void main() {
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: AppRouter.onGenerateRoute,
       onUnknownRoute: AppRouter.onUnknownRoute,
       title: 'WasHere',
-      initialRoute: AppRouter.changeDetailsPage,
+      initialRoute: AppRouter.splashScreen,
     );
   }
 }
