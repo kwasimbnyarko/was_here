@@ -90,14 +90,7 @@ class _ViewDetailsPageState extends State<ViewDetailsPage> {
                           },
                         ),
                         const SizedBox(
-                          height: 20,
-                        ),
-                        const CustomButton(
-                          buttonColor: Color(0xff8c8c8c),
-                          buttonLabel: "Change Details",
-                        ),
-                        const SizedBox(
-                          height: 20,
+                          height: 100,
                         ),
                         const CustomButton(
                           buttonColor: Color(0xff5671FF),

@@ -43,7 +43,7 @@ class UserDetails {
     if (!areDetailsAvailable!) {
       await getDeviceMacAddress();
       print('getting uset with thta mac');
-      await DetailsApiService().getUserWithMacAddress('abc');
+      await DetailsApiService().getUserWithMacAddress(deviceMacAddress!);
     }
   }
 
