@@ -38,7 +38,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   http: ^0.13.5
   shared_preferences: ^2.0.15
-  get_mac: ^0.0.1
+  get_mac_address: ^0.0.2
+
 
 dev_dependencies:
   flutter_test:

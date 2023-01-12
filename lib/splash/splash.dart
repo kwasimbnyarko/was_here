@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:was_here/user/user_details.dart';
+import 'package:was_here/utils/app_routes.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -11,7 +12,13 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    UserDetails.getUserDetails();
+    UserDetails.getUserDetails().then((value) => {
+          // print(UserDetails.areDetailsAvailable!),
+          if (!UserDetails.areDetailsAvailable!)
+            {print('add'), Navigator.of(context).addDetails()}
+          else
+            {print('view'), Navigator.of(context).viewDetails()}
+        });
     super.initState();
   }
 

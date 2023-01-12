@@ -5,16 +5,14 @@ import '../components/details_page/DetailsTextField.dart';
 import '../components/details_page/DetialsPageCustomButton.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../user/user_details.dart';
-
-class ViewDetailsPage extends StatefulWidget {
+class AddDetailsPage extends StatefulWidget {
   bool? areDetailsAvailable;
 
   @override
-  State<ViewDetailsPage> createState() => _ViewDetailsPageState();
+  State<AddDetailsPage> createState() => _AddDetailsPageState();
 }
 
-class _ViewDetailsPageState extends State<ViewDetailsPage> {
+class _AddDetailsPageState extends State<AddDetailsPage> {
   @override
   void initState() {
     // TODO: implement initState
@@ -35,7 +33,7 @@ class _ViewDetailsPageState extends State<ViewDetailsPage> {
                 flex: 4,
                 child: Center(
                   child: Text(
-                    "View My Details",
+                    "Enter Details",
                     style: TextStyle(fontFamily: 'Nunito', fontSize: 35),
                   ),
                 ),
@@ -50,14 +48,14 @@ class _ViewDetailsPageState extends State<ViewDetailsPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         DetailsTextField(
-                          hintText: UserDetails.name,
-                          enabled: false,
+                          hintText: "Full Name",
+                          // enabled: (widget.areDetailsAvailable!) ? false : true,
                         ),
                         DetailsTextField(
-                          hintText: UserDetails.indexNumber,
+                          hintText: "Index Number",
                           keyboardType: TextInputType.number,
-                          // maxLength: 7,
-                          enabled: false,
+                          maxLength: 7,
+                          // enabled: (widget.areDetailsAvailable!) ? false : true,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "Please enter index number";
@@ -72,10 +70,10 @@ class _ViewDetailsPageState extends State<ViewDetailsPage> {
                           },
                         ),
                         DetailsTextField(
-                          hintText: UserDetails.referenceNumber,
+                          hintText: "Reference number",
                           keyboardType: TextInputType.number,
-                          // maxLength: 8,
-                          enabled: false,
+                          maxLength: 8,
+                          // enabled: (widget.areDetailsAvailable!) ? false : true,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "Please enter index number";

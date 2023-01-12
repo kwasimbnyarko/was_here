@@ -86,13 +86,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  get_mac:
+  get_mac_address:
     dependency: "direct main"
     description:
-      name: get_mac
+      name: get_mac_address
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.1"
+    version: "0.0.2"
   http:
     dependency: "direct main"
     description:

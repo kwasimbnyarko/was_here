@@ -1,6 +1,7 @@
 //uri data
-const String scheme = 'http';
-const String host = 'localhost:3000';
+const String scheme = 'https';
+const String host = 'cb7c-154-160-26-58.eu.ngrok.io';
 
-//create user paths
-const String createUserPath = '/api/v1/events';
+// user paths
+const String createUserPath = '/api/v1/users';
+const String getUserWithMacAddressPath = '/api/v1/users/';
