@@ -50,11 +50,11 @@ class _ViewDetailsPageState extends State<ViewDetailsPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         DetailsTextField(
-                          hintText: UserDetails.name,
+                          hintText: UserDetails.name ?? "--",
                           enabled: false,
                         ),
                         DetailsTextField(
-                          hintText: UserDetails.indexNumber,
+                          hintText: UserDetails.indexNumber ?? "--",
                           keyboardType: TextInputType.number,
                           // maxLength: 7,
                           enabled: false,
@@ -72,7 +72,7 @@ class _ViewDetailsPageState extends State<ViewDetailsPage> {
                           },
                         ),
                         DetailsTextField(
-                          hintText: UserDetails.referenceNumber,
+                          hintText: UserDetails.referenceNumber ?? "--",
                           keyboardType: TextInputType.number,
                           // maxLength: 8,
                           enabled: false,
@@ -92,10 +92,27 @@ class _ViewDetailsPageState extends State<ViewDetailsPage> {
                         const SizedBox(
                           height: 100,
                         ),
-                        const CustomButton(
-                          buttonColor: Color(0xff5671FF),
-                          buttonLabel: "Done",
-                          labelColor: Colors.white,
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              //todo mark attendance call here
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  color: const Color(0xff5671FF),
+                                  borderRadius: BorderRadius.circular(8)),
+                              child: const Center(
+                                child: Text(
+                                  'Scan',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 16),
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                       ],
                     ),

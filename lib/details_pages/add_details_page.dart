@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:was_here/api/datails_api_service.dart';
 import 'package:was_here/user/user_details.dart';
+import 'package:was_here/utils/app_routes.dart';
 import '../components/details_page/DetailsTextField.dart';
 import '../models/create_user_model.dart';
 
@@ -15,6 +16,7 @@ class AddDetailsPage extends StatefulWidget {
 
 class _AddDetailsPageState extends State<AddDetailsPage> {
   final _formKey = GlobalKey<FormState>();
+
   @override
   void initState() {
     // TODO: implement initState
@@ -56,8 +58,6 @@ class _AddDetailsPageState extends State<AddDetailsPage> {
                             validator: (value) {
                               setState(() {
                                 widget.requestModel.name = value!;
-                                print('value : $value');
-                                print(widget.requestModel.name);
                               });
                             },
                           ),
@@ -125,7 +125,14 @@ class _AddDetailsPageState extends State<AddDetailsPage> {
                                   });
                                 }
                                 DetailsApiService()
-                                    .createUser(widget.requestModel);
+                                    .createUser(widget.requestModel)
+                                    .then((value) => {
+                                          if (value == 201)
+                                            {
+                                              Navigator.of(context)
+                                                  .viewDetails()
+                                            }
+                                        });
                               },
                               child: Container(
                                 width: double.infinity,

@@ -5,7 +5,7 @@ import '../models/create_user_model.dart';
 import '../utils/api_call_paths.dart';
 
 class DetailsApiService {
-  Future<void> createUser(CreateUserRequestModel requestModel) async {
+  Future<int> createUser(CreateUserRequestModel requestModel) async {
     Uri url = Uri(scheme: scheme, host: host, path: createUserPath);
 
     try {
@@ -21,10 +21,12 @@ class DetailsApiService {
         UserDetails.deviceMacAddress = createUserResponse["mac_address"];
         UserDetails.areDetailsAvailable = true;
         UserDetails.setUserDetailsToSharedPreferences();
+        return response.statusCode;
       }
     } catch (e) {
       rethrow;
     }
+    return 0;
   }
 
   Future<void> getUserWithMacAddress(String macAddress) async {

@@ -20,12 +20,11 @@ class CreateUserResponseModel {
   String? name;
   String? referenceNumber;
   String? indexNumber;
-  String? macAddress;
 
-  CreateUserResponseModel(
-      {this.userId,
-      this.name,
-      this.referenceNumber,
-      this.indexNumber,
-      this.macAddress});
+  CreateUserResponseModel({
+    this.userId,
+    this.name,
+    this.referenceNumber,
+    this.indexNumber,
+  });
 }
