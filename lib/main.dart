@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: AppRouter.onGenerateRoute,
       onUnknownRoute: AppRouter.onUnknownRoute,
       title: 'WasHere',
-      initialRoute: AppRouter.splashScreen,
+      initialRoute: AppRouter.scanPage,
     );
   }
 }

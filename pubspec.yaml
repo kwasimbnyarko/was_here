@@ -39,6 +39,7 @@ dependencies:
   http: ^0.13.5
   shared_preferences: ^2.0.15
   get_mac_address: ^0.0.2
+  qr_code_scanner: ^1.0.1
 
 
 dev_dependencies:

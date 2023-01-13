@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:was_here/details_pages/add_details_page.dart';
 import 'package:was_here/details_pages/check_details.dart';
-import 'package:was_here/details_pages/change_details.dart';
+import 'package:was_here/scan/scan_page.dart';
+
 import 'package:was_here/splash/splash.dart';
 
 class AppRouter {
   static const String viewDetailsPage = "/detailsPage";
-  // static const String changeDetailsPage = '/changeDetialsPage';
+
   static const String splashScreen = '/splash';
   static const String addDetailsPage = '/addDetailsPage';
+  static const String scanPage = '/scanPage';
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -18,12 +20,12 @@ class AppRouter {
       case viewDetailsPage:
         return MaterialPageRoute(
             builder: (context) => ViewDetailsPage(), settings: settings);
-      // case changeDetailsPage:
-      //   return MaterialPageRoute(
-      //       builder: (context) => ChangeDetailsPage(), settings: settings);
       case addDetailsPage:
         return MaterialPageRoute(
             builder: (context) => AddDetailsPage(), settings: settings);
+      case scanPage:
+        return MaterialPageRoute(
+            builder: (context) => ScanPage(), settings: settings);
     }
     return null;
   }
@@ -41,8 +43,6 @@ class AppRouter {
 
 extension NavigatorStateExtension on NavigatorState {
   Future<void> viewDetails() => pushNamed(AppRouter.viewDetailsPage);
-  // Future<void> editDetails() => pushNamed(AppRouter.detailsPage);
   Future<void> addDetails() => pushNamed(AppRouter.addDetailsPage);
-  // Future<void> viewDetails() => pushNamed(AppRouter.detailsPage);
-
+  Future<void> scanPage() => pushNamed(AppRouter.scanPage);
 }
