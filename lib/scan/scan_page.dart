@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:was_here/models/mark_attendance_model.dart';
 import 'package:was_here/utils/app_routes.dart';
 
 class ScanPage extends StatefulWidget {
@@ -11,6 +12,8 @@ class ScanPage extends StatefulWidget {
 }
 
 class _ScanPageState extends State<ScanPage> {
+  MarkAttendanceRequestModel markAttendanceRequestModel =
+      MarkAttendanceRequestModel();
   Barcode? result;
   QRViewController? controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
@@ -55,12 +58,16 @@ class _ScanPageState extends State<ScanPage> {
       this.controller = controller;
     });
     controller.scannedDataStream.listen((scanData) {
-      setState(() {
-        result = scanData;
-      });
-      print('qr value = ${result!.code}');
-      //todo stop scan here
-      Navigator.of(context).viewDetails();
+      if (result == null) {
+        setState(() {
+          result = scanData;
+        });
+        print('qr value = ${result!.code}');
+        //todo stop scan here
+        markAttendanceRequestModel.code = result!.code;
+        //todo make call to mark attendance
+        Navigator.of(context).viewDetails();
+      }
     });
   }
 

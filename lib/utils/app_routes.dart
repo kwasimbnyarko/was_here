@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:was_here/details_pages/add_details_page.dart';
-import 'package:was_here/details_pages/check_details.dart';
+import 'package:was_here/details_pages/view_details.dart';
 import 'package:was_here/scan/scan_page.dart';
 
 import 'package:was_here/splash/splash.dart';

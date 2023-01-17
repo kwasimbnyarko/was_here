@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:was_here/utils/app_routes.dart';
 import 'package:was_here/utils/shared_preferences_keys.dart';
 import '../components/details_page/DetailsTextField.dart';
 import '../components/details_page/DetialsPageCustomButton.dart';
@@ -92,23 +93,29 @@ class _ViewDetailsPageState extends State<ViewDetailsPage> {
                         const SizedBox(
                           height: 100,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                          child: GestureDetector(
-                            onTap: () {
-                              //todo mark attendance call here
-                            },
-                            child: Container(
-                              width: double.infinity,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                  color: const Color(0xff5671FF),
-                                  borderRadius: BorderRadius.circular(8)),
-                              child: const Center(
-                                child: Text(
-                                  'Scan',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 16),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).scanPage();
+                          },
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 20.0),
+                            child: GestureDetector(
+                              onTap: () {
+                                //todo mark attendance call here
+                              },
+                              child: Container(
+                                width: double.infinity,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                    color: const Color(0xff5671FF),
+                                    borderRadius: BorderRadius.circular(8)),
+                                child: const Center(
+                                  child: Text(
+                                    'Scan',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 16),
+                                  ),
                                 ),
                               ),
                             ),
