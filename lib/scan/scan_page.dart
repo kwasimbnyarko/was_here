@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:was_here/api/attendance_api_service.dart';
 import 'package:was_here/models/mark_attendance_model.dart';
 import 'package:was_here/utils/app_routes.dart';
 
@@ -62,11 +63,22 @@ class _ScanPageState extends State<ScanPage> {
         setState(() {
           result = scanData;
         });
+
         print('qr value = ${result!.code}');
-        //todo stop scan here
+
         markAttendanceRequestModel.code = result!.code;
-        //todo make call to mark attendance
-        Navigator.of(context).viewDetails();
+        //todo show some progress here for the user
+        AttendanceApiService()
+            .markAttendance(markAttendanceRequestModel)
+            .then((statusCode) => {
+                  if (statusCode == 200)
+                    {Navigator.of(context).scanCompletePage()}
+                  else
+                    {
+                      Navigator.of(context).scanErrorPage()
+                      //todo error page
+                    }
+                });
       }
     });
   }

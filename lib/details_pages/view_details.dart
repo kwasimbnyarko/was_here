@@ -95,6 +95,7 @@ class _ViewDetailsPageState extends State<ViewDetailsPage> {
                         ),
                         GestureDetector(
                           onTap: () {
+                            print('hit');
                             Navigator.of(context).scanPage();
                           },
                           child: Padding(
@@ -102,7 +103,7 @@ class _ViewDetailsPageState extends State<ViewDetailsPage> {
                                 const EdgeInsets.symmetric(horizontal: 20.0),
                             child: GestureDetector(
                               onTap: () {
-                                //todo mark attendance call here
+                                Navigator.of(context).scanPage();
                               },
                               child: Container(
                                 width: double.infinity,
