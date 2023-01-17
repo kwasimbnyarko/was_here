@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:was_here/utils/app_routes.dart';
 
 class ScanPage extends StatefulWidget {
   const ScanPage({Key? key}) : super(key: key);
@@ -28,28 +29,24 @@ class _ScanPageState extends State<ScanPage> {
     return Scaffold(
       body: Center(
         child: Column(
-          children: <Widget>[Expanded(flex: 4, child: _buildQrView(context))],
+          children: <Widget>[
+            Expanded(
+                flex: 4,
+                child: QRView(
+                  key: qrKey,
+                  onQRViewCreated: _onQRViewCreated,
+                  overlay: QrScannerOverlayShape(
+                      borderColor: Colors.red,
+                      borderRadius: 10,
+                      borderLength: 30,
+                      borderWidth: 10,
+                      cutOutSize: 300),
+                  onPermissionSet: (ctrl, p) =>
+                      _onPermissionSet(context, ctrl, p),
+                ))
+          ],
         ),
       ),
-    );
-  }
-
-  Widget _buildQrView(BuildContext context) {
-    var scanArea = (MediaQuery.of(context).size.width < 400 ||
-            MediaQuery.of(context).size.height < 400)
-        ? 150.0
-        : 300.0;
-
-    return QRView(
-      key: qrKey,
-      onQRViewCreated: _onQRViewCreated,
-      overlay: QrScannerOverlayShape(
-          borderColor: Colors.red,
-          borderRadius: 10,
-          borderLength: 30,
-          borderWidth: 10,
-          cutOutSize: scanArea),
-      onPermissionSet: (ctrl, p) => _onPermissionSet(context, ctrl, p),
     );
   }
 
@@ -61,6 +58,9 @@ class _ScanPageState extends State<ScanPage> {
       setState(() {
         result = scanData;
       });
+      print('qr value = ${result!.code}');
+      //todo stop scan here
+      Navigator.of(context).viewDetails();
     });
   }
 
@@ -71,5 +71,12 @@ class _ScanPageState extends State<ScanPage> {
         const SnackBar(content: Text('no Permission')),
       );
     }
+  }
+
+  //todo dispose controller when leaving page
+  @override
+  void dispose() {
+    controller?.dispose();
+    super.dispose();
   }
 }
