@@ -37,7 +37,7 @@ class ScanResultPage extends StatelessWidget {
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
