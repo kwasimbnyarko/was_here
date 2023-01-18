@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:was_here/api/attendance_api_service.dart';
 import 'package:was_here/models/mark_attendance_model.dart';
-import 'package:was_here/utils/app_routes.dart';
+import 'package:was_here/scan/scan_result_page.dart';
 
 class ScanPage extends StatefulWidget {
   const ScanPage({Key? key}) : super(key: key);
@@ -67,17 +67,16 @@ class _ScanPageState extends State<ScanPage> {
         print('qr value = ${result!.code}');
 
         markAttendanceRequestModel.code = result!.code;
-        //todo show some progress here for the user
+
         AttendanceApiService()
             .markAttendance(markAttendanceRequestModel)
-            .then((statusCode) => {
-                  if (statusCode == 200)
-                    {Navigator.of(context).scanCompletePage()}
-                  else
-                    {
-                      Navigator.of(context).scanErrorPage()
-                      //todo error page
-                    }
+            .then((response) => {
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute<void>(
+                          builder: (BuildContext context) =>
+                              ScanResultPage(response: response)),
+                      (route) => false)
                 });
       }
     });

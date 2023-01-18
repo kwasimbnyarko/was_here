@@ -16,12 +16,11 @@ class MarkAttendanceRequestModel {
 
 class MarkAttendanceResponseModel {
   bool? success;
-  String? attendance;
+
   String? error;
 
   MarkAttendanceResponseModel({
     this.success,
-    this.attendance,
     this.error,
   });
 }
